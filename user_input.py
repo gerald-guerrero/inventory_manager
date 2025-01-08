@@ -26,9 +26,9 @@ def get_search_term():
     return input("Enter the name to search for: ")
 
 
-#Test the module
-if __name__ == "__main__": #The code inside this block runs only if the file is executed directly (not imported as a module)
-    print("Testing input manager...")
+#Testing Block
+if __name__ == "__main__":
+    print("")
 
 #Test the menu choice
 menu_choice = get_main_menu_choice() #Calls the function to test it.
