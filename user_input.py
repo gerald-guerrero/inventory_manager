@@ -2,10 +2,10 @@
 def get_main_menu_choice():
     while True: #Creates a loop that keeps running until the user provides valid input.
         try: #Used to test block of code for errors.
-            choice = int(input("Enter a menu option [1-8]: ")) #input() Prompts the user to type something, int() Converts the string input into a number.
-            if 1 <= choice <= 8: # Checks if the integer is between 1 and 8
-                return choice # Sends the valid number back to the function.
-            else: # Runs if the number is outside the range
+            choice = input("Enter a menu option [1-8]: ") #input() Prompts the user to type something, int() Converts the string input into a number.
+            if choice.isdigit() and 1 <= int(choice) <= 8: #Checks if the choice contains only numbers and is between 1 and 8
+                return int(choice) #Converts the menu choice (string) into an integer and sends the number back to the program.
+            else: #Runs if the choice fails validation check (isdigit() or range check).
                 print("Invalid choice. Enter a number between 1 and 8.")
         except ValueError: # except - catches errors from the try block, if the user types "abc". ValueError - used when Python tries to convert a word into a number but fails.
             print("That's not a valid number. Try again.") #Asks the user to try again
@@ -13,15 +13,22 @@ def get_main_menu_choice():
 
 #Get Item Details ask the user for an item's name and quantity.
 def get_item_details():
-    item_name = input("Enter the item's name: ")
     while True: # Keeps asking until the user provides a valid number for quantity
+        item_name = input("Enter the item's name: ")
+        if not item_name or any(char in "#@!" for char in item_name): #Checks if the item name is empty or contains invalid characters
+            print("Invalid name. It cannot be empty or contain symbols like #, @, or !") # Tells the user what’s wrong and restarts the loop for valid input.
+            continue
+
         try:
-            quantity = int(input(f"Enter the quantity for {item_name}: ")) # Converts quantity to an integer
-            return item_name, quantity # Sends back as a tuple (item_name, quantity)
-        except ValueError: # Catches errors if the input cannot be converted to an integer
+            quantity = input(f"Enter the quantity for {item_name}: ") #Prompts user to enter a quantity for the item
+            if not quantity.isdigit() or int(quantity) <=0: # Checks input contains only digits and quantity is greater than zero
+                print("Quantity must be a positive number.")
+                continue
+            return item_name, int(quantity) # Sends back as a tuple (item_name, quantity)
+        except ValueError: # Catches errors if the input can't be converted to an integer
             print("Please enter a valid number for the quantity.")
 
-#Get a Search Term ask the user for a search term.
+#GAsk the user for a search term to look up items in the inventory
 def get_search_term():
     return input("Enter the name to search for: ")
 
