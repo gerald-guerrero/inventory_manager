@@ -64,13 +64,6 @@ def update_quantity(inventory, item_name, new_quantity):
         add_item(inventory, item_name, new_quantity )
         return True
 
-# add_item(inventory, "Apple", 8)
-
-# print(inventory)
-# remove_item(inventory, "  apple")
-# print(inventory)
-# update_quantity(inventory, "apple", 4)
-# print(inventory)
 
 
-\
+
