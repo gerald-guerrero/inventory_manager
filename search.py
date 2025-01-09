@@ -1,3 +1,5 @@
+# test_list = [{"bread": 5}, {"white Bread": 10}, {"milk": 15}]
+
 # con_lowercase function takes list of dictionaries as an argument
 def conv_lowercase(dicts_list):
     # Create an empty list
@@ -20,18 +22,23 @@ def conv_lowercase(dicts_list):
     # Return new lowercase list of dictionaries     
     return result
 
-# search function that takes search item, search value, and a list of dictionaries
-# search_value must exist in list of dictionaries or the program will generate an error
-def search(user_search_item, search_value, test_list):
+# search function that takes search item and a list of dictionaries
+def search(user_search_item, test_list):
     # Convert user_search_item to lowercase
     user_search_item = user_search_item.lower()
-
-    # Convert search_value to lowercase
-    search_value = search_value.lower()
 
     # Assign converted list of dictionaries to lower_case_list
     lower_case_list = conv_lowercase(test_list)
 
-    # Use list comprehension to return a list of dictionary items that match the user's search item
-    # Return an empty list if the item is not in the list of dictionaries
-    return [x for x in lower_case_list if x[search_value] == user_search_item]
+    # Create an empty list
+    result = []
+
+    # Iterate through lowercase list
+    for x in lower_case_list:
+        for key, value in x.items():
+            if user_search_item in key:
+                result.append(key)
+    return result
+
+#search_results = search("bread", test_list)
+#print(search_results)
