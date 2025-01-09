@@ -30,15 +30,15 @@ def get_search_term():
 if __name__ == "__main__":
     print("")
 
-#Test the menu choice
-menu_choice = get_main_menu_choice() #Calls the function to test it.
-print(f"You selected menu option: {menu_choice}") # Confirms the user's menu choice
+    #Test the menu choice
+    menu_choice = get_main_menu_choice() #Calls the function to test it.
+    print(f"You selected menu option: {menu_choice}") # Confirms the user's menu choice
 
-#Test item details
-name, quantity = get_item_details()
-print(f"Item: {name}, Quantity: {quantity}") # Confirms the item name and quantity
+    #Test item details
+    name, quantity = get_item_details()
+    print(f"Item: {name}, Quantity: {quantity}") # Confirms the item name and quantity
 
-#Test search term
-search = get_search_term()
-print(f"Search Term: {search}") #Confirms the search term
+    #Test search term
+    search = get_search_term()
+    print(f"Search Term: {search}") #Confirms the search term
 
