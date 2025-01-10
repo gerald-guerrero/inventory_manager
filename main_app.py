@@ -28,6 +28,8 @@ while (menu_choice != 8):
     elif (menu_choice == 4):
         print("\n(Search Items) selected")
         search_term = user_input.get_search_term()
+        search_results = search.search(search_term, inventory)
+        print(search_results)
     elif (menu_choice == 5):
         print("\n(Show Stats) selected")
         inventory_count = stats.get_inventory_count(inventory)
