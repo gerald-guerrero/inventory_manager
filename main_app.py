@@ -6,7 +6,7 @@ import Jason_stats as stats
 menu_choice = 0
 inventory = []
 # Loop will continue to ask for user input until 8 is selected which breaks the loop
-while (menu_choice != 8): 
+while (True): 
     # Reads menu.txt to print out menu options
     with open("menu.txt", "r") as menu: 
         print(menu.read())
@@ -43,5 +43,7 @@ while (menu_choice != 8):
         print("\n(Save Inventory) selected")
     elif (menu_choice == 7):
         print("\n(Load Inventory) selected")
-    print(inventory)
-print("\nExiting Inventory Manager\n")
+    elif(menu_choice == 8):
+        print("\nExiting Inventory Manager")
+        break
+    input("\nPress \"Enter\" to Continue")

@@ -1,5 +1,4 @@
 
-
 |----------------------|
 |   Inventory Manager  |
 |     Menu Options     |
@@ -13,4 +12,3 @@
 | 7 | Load Inventory   |
 | 8 | Exit             |
 |----------------------|
-
