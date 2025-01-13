@@ -6,7 +6,7 @@ import Jason_stats as stats
 menu_choice = 0
 inventory = []
 # Loop will continue to ask for user input until 8 is selected which breaks the loop
-while (menu_choice != 8): 
+while (True): 
     # Reads menu.txt to print out menu options
     with open("menu.txt", "r") as menu: 
         print(menu.read())
@@ -15,26 +15,26 @@ while (menu_choice != 8):
     #The following conditionals check the user input for an associated menu option
     if (menu_choice == 1):
         print("\n(Add Item) selected")
-        item_name, item_qty = user_input.get_item_details()
-        inventory_operations.add_item(inventory, item_name, item_qty)
+        item_name, item_qty = user_input.get_item_details() # Retrieves item data from user
+        inventory_operations.add_item(inventory, item_name, item_qty) # Adds item data to inventory
     elif (menu_choice == 2):
         print("\n(Remove Item) selected")
-        item_name = user_input.get_search_term()
-        inventory_operations.remove_item(inventory, item_name)
+        item_name = user_input.get_search_term() # Gets item name from user
+        inventory_operations.remove_item(inventory, item_name) # Removes item from inventory
     elif (menu_choice == 3):
         print("\n(Update Quantity) selected")
-        item_name, item_qty = user_input.get_item_details()
-        inventory_operations.update_quantity(inventory, item_name, item_qty)
+        item_name, item_qty = user_input.get_item_details() # Retrieves item data from user
+        inventory_operations.update_quantity(inventory, item_name, item_qty) # Updates the quantity
     elif (menu_choice == 4):
         print("\n(Search Items) selected")
-        search_term = user_input.get_search_term()
-        search_results = search.search(search_term, inventory)
+        search_term = user_input.get_search_term() # Gets item name from user
+        search_results = search.search(search_term, inventory) # Gets search results from item name
         print(search_results)
     elif (menu_choice == 5):
         print("\n(Show Stats) selected")
-        inventory_count = stats.get_inventory_count(inventory)
-        total_quantity = stats.get_total_quantity(inventory)
-        top_item = stats.get_top_item(inventory)
+        inventory_count = stats.get_inventory_count(inventory) # Gets the amount of unique items
+        total_quantity = stats.get_total_quantity(inventory) # Gets total amount of all items
+        top_item = stats.get_top_item(inventory) # Gets item with highest quantity
 
         print("Inventory Count: ", inventory_count)
         print("Total Quantity: ", total_quantity)
@@ -43,5 +43,10 @@ while (menu_choice != 8):
         print("\n(Save Inventory) selected")
     elif (menu_choice == 7):
         print("\n(Load Inventory) selected")
-    print(inventory)
-print("\nExiting Inventory Manager\n")
+    elif(menu_choice == 8):
+        # Will exit the main menu loop and stop the program
+        print("\nExiting Inventory Manager")
+        break
+    
+    # Creates a break in between menu loops to prioritize showing menu results before continuing
+    input("\nPress \"Enter\" to Continue") 
