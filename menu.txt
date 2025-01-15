@@ -1,0 +1,14 @@
+
+|----------------------|
+|   Inventory Manager  |
+|     Menu Options     |
+|----------------------|
+| 1 | Add Option       |
+| 2 | Remove Item      |
+| 3 | Update Quantity  |
+| 4 | Search Items     |
+| 5 | Show stats       |
+| 6 | Save Inventory   |
+| 7 | Load Inventory   |
+| 8 | Exit             |
+|----------------------|
