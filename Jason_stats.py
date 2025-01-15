@@ -15,13 +15,13 @@ def get_top_item(inventory_list):   # get the top item (highest number) in the i
                 combined_inventory[item] += quantity
             else:
                 combined_inventory[item] = quantity
-    try:                       # Try/except block should only work if numbers are not a tie
+    try:                       
         return max(combined_inventory, key=combined_inventory.get)
-    except ValueError:
+    except ValueError:                       #Except block should only work if numbers are not present
         return None
     
 if __name__ == "__main__":
-    mock_inv = [{"Apple": 6}, {"Orange": 6}]
-    print(get_inventory_count(mock_inv))  # Expect 2
-    print(get_total_quantity(mock_inv))   # Expect 12
-    print(get_top_item(mock_inv))         # Expect "None"
+    mock_inv = [{"Apple": 6}, {"Orange": 6}, {"Kiwi": 9}]
+    print(get_inventory_count(mock_inv))  # Expect 3
+    print(get_total_quantity(mock_inv))   # Expect 21
+    print(get_top_item(mock_inv))         # Expect "Kiwi"
