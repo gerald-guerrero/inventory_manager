@@ -13,7 +13,7 @@ def add_item(inventory, item_name, quantity):
     #Validations-------------------------------
     if isinstance(quantity, str):
         try: 
-            
+
             quantity = int(quantity)
         except ValueError:
             print("Quantity must be a number!")
@@ -27,7 +27,7 @@ def add_item(inventory, item_name, quantity):
         print("Status: Failure")
         return False
     elif quantity < 0:
-        print("Quantity cannot be 0!")
+        print("Quantity cannot be negative!")
         print("Status:Failure")
         return False
     elif quantity == 0:
@@ -95,7 +95,7 @@ def update_quantity(inventory, item_name, new_quantity):
         print("Status: Failure")
         return False
     elif new_quantity < 0:
-        print("New quantity cannot be negative")
+        print("New quantity cannot be negative!")
         print("Status:Failure")
         return False
     elif new_quantity == 0:
