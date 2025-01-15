@@ -12,15 +12,22 @@ def add_item(inventory, item_name, quantity):
 
     #Validations-------------------------------
     if isinstance(quantity, str):
-        print("Quantity must be a number!")
-        print("Status: Failure")
-        return False
+        try: 
+
+            quantity = int(quantity)
+        except ValueError:
+            print("Quantity must be a number!")
+            print("Status: Failure")
+            return False
+        
+        
+        
     elif isinstance(item_name, int):
         print("Item name cannot be a number!")
         print("Status: Failure")
         return False
     elif quantity < 0:
-        print("Quantity cannot be 0!")
+        print("Quantity cannot be negative!")
         print("Status:Failure")
         return False
     elif quantity == 0:
@@ -41,7 +48,7 @@ def add_item(inventory, item_name, quantity):
             return True
     
     # If not found Asigns value to key of fruit - asigns quantity to new fruit 
-    new_fruit = {fruit_no_spaces: int(quantity)}  
+    new_fruit = {fruit_no_spaces: (quantity)}  
     inventory.append(new_fruit)
     print(f"Created new item! {fruit_no_spaces} added to inventory with a quantity of {quantity}") 
     print("Status: Success!")
@@ -77,15 +84,18 @@ def update_quantity(inventory, item_name, new_quantity):
     
     #Validations ----------------------------------
     if isinstance(new_quantity, str):
-        print("New quantity must be a number!")
-        print("Status: Failure")
-        return False
+        try:
+            new_quantity = int(new_quantity)
+        except ValueError:
+            print("New quantity must be a number!")
+            print("Status: Failure")
+            return False
     elif isinstance(item_name, int):
         print("Item name cannot be a number!")
         print("Status: Failure")
         return False
     elif new_quantity < 0:
-        print("New quantity cannot be negative")
+        print("New quantity cannot be negative!")
         print("Status:Failure")
         return False
     elif new_quantity == 0:
@@ -103,7 +113,6 @@ def update_quantity(inventory, item_name, new_quantity):
         print("Item not found, adding item")
         add_item(inventory, item_name, new_quantity )
         return True
-
 
 
 
