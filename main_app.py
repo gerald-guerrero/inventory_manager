@@ -2,6 +2,29 @@ import user_input
 import inventory_operations
 import search
 import Jason_stats as stats
+import json
+
+def save_inventory(inventory, filename="inventory.json"):
+    """
+    Takes in the current inventory and saves it with the designated file name and type
+    file is saved to the current working directory
+    """
+    with open(filename, "w") as f:
+        json.dump(inventory, f)
+    return
+
+def load_inventory(filename="inventory.json"):
+    """
+    Reads the saved inventory file if it exists and returns the inventory as a list of dicts
+    If the file is not found, it will return an empty list
+    """
+    try:
+        with open(filename, "r") as f:
+            inventory = json.load(f)
+    except:
+        print("File not found. Returning an empty list")
+        inventory = []
+    return inventory
 
 menu_choice = 0
 inventory = []
@@ -41,12 +64,16 @@ while (True):
         print("Top Item: ", top_item)
     elif (menu_choice == 6):
         print("\n(Save Inventory) selected")
+        # Saves current inventory list to inventory.json
+        save_inventory(inventory, "inventory.json") 
     elif (menu_choice == 7):
         print("\n(Load Inventory) selected")
+        # Retreives inventory data from inventory.json and assigns it to the inventory list
+        inventory = load_inventory("inventory.json") 
     elif(menu_choice == 8):
         # Will exit the main menu loop and stop the program
         print("\nExiting Inventory Manager")
         break
-    
+
     # Creates a break in between menu loops to prioritize showing menu results before continuing
-    input("\nPress \"Enter\" to Continue") 
+    input("\nPress \"Enter\" to Continue\n") 
